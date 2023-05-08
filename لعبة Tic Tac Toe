@@ -105,11 +105,15 @@ public class TicTacToeGame {
         }
     }
 
-    private static void playerTurn(char[][] board, Scanner scanner) {
+    private static void playerTurn(char[][] board, Scanner scanner) throws Exception{
         String userInput;
         while (true) {
-            System.out.println("where would you like to play? (1-9)");
+            System.out.println("Enter Your Move!!");
             userInput = scanner.nextLine();
+
+            if(checkNumber(userInput)){
+                throw new Exception("Pls enter number between(1-9)");
+            }
             if (isValidMove(board, userInput)){
                 break;
             } else {
@@ -118,6 +122,7 @@ public class TicTacToeGame {
         }
         placeMove(board, userInput, 'X');
     }
+
 
 
     private static void placeMove(char[][] board, String position, char symbol) {
